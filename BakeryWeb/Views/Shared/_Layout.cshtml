@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Shree Ganesh Bakery, Pune</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm mb-0 shadow-sm">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fa-solid fa-shop me-2 fs-3 text-primary"></i>
+                    <div>
+                        <span class="d-block lh-1" style="font-size: 1.5rem; color:#4a2511;">Shree Ganesh Bakery</span>
+                        <small class="text-muted" style="font-size: 0.8rem; font-family:'Outfit', sans-serif; letter-spacing:1px;">Est. Pune</small>
+                    </div>
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1 justify-content-end align-items-center">
+                        <li class="nav-item mx-2">
+                            <a class="nav-link fs-5" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link fs-5" asp-area="" asp-controller="Menu" asp-action="Index">Our Menu</a>
+                        </li>
+                        <li class="nav-item ms-4">
+                            <!-- WhatsApp Order Link format using international number for India -->
+                            <a class="btn btn-primary-custom" href="https://wa.me/919876543210?text=Hello%20Shree%20Ganesh%20Bakery!%20I%20would%20like%20to%20place%20an%20order." target="_blank">
+                                <i class="fa-brands fa-whatsapp fs-5 me-2"></i>Order on WhatsApp
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main" class="flex-grow-1">
+        @RenderBody()
+    </main>
+
+    <footer class="text-center mt-auto">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-md-start mb-3 mb-md-0">
+                    <h5 class="text-white mb-2" style="font-family: 'Playfair Display', serif;">Shree Ganesh Bakery</h5>
+                    <p class="small text-muted mb-0">Serving the authentic taste of Pune.</p>
+                    <p class="small text-muted mt-1"><i class="fa-solid fa-location-dot me-1"></i> FC Road, Deccan Gymkhana, Pune</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <a href="#" class="text-muted text-decoration-none mx-2"><i class="fa-brands fa-instagram fs-4"></i></a>
+                    <a href="#" class="text-muted text-decoration-none mx-2"><i class="fa-brands fa-facebook fs-4"></i></a>
+                    <a href="#" class="text-muted text-decoration-none mx-2"><i class="fa-brands fa-whatsapp fs-4"></i></a>
+                </div>
+                <div class="col-md-4 text-md-end text-muted small">
+                    &copy; 2026 - Shree Ganesh Bakery, Pune
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- Add simple Javascript for Add button interactions -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+             const addButtons = document.querySelectorAll('.add-to-cart-btn');
+             addButtons.forEach(btn => {
+                 btn.addEventListener('click', function(e) {
+                     e.preventDefault();
+                     const itemName = this.getAttribute('data-item');
+                     alert(`${itemName} added to your order! Complete your booking via WhatsApp.`);
+                 });
+             });
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
